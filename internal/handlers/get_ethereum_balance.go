@@ -10,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func GetBitcoinBalance(w http.ResponseWriter, r *http.Request) {
+func GetEthereumBalance(w http.ResponseWriter, r *http.Request) {
 	var params = api.CoinBalanceParams{}
 	var decoder *schema.Decoder = schema.NewDecoder()
 	var err error
@@ -30,8 +30,8 @@ func GetBitcoinBalance(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// var tokenDetails *tools.CoinDetails
-	tokenDetails := (*database).GetUserBitcoin(params.Username)
+	// var tokenDetails *tools.EthereumDetails
+	tokenDetails := (*database).GetUserEthereum(params.Username)
 	if tokenDetails == nil {
 		log.Error(err)
 		api.InternalErrorHandler(w)

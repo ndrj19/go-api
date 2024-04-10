@@ -19,7 +19,7 @@ var mockLoginDetails = map[string]LoginDetails{
 	},
 }
 
-var mockCoinDetails = map[string]CoinDetails{
+var mockBitcoinDetails = map[string]BitcoinDetails{
 	"gwaggli": {
 		Coins:    100,
 		Username: "gwaggli",
@@ -30,6 +30,21 @@ var mockCoinDetails = map[string]CoinDetails{
 	},
 	"gigi": {
 		Coins:    300,
+		Username: "gigi",
+	},
+}
+
+var mockEthereumDetails = map[string]EthereumDetails{
+	"gwaggli": {
+		Coins:    1000,
+		Username: "gwaggli",
+	},
+	"urs": {
+		Coins:    2000,
+		Username: "urs",
+	},
+	"gigi": {
+		Coins:    3000,
 		Username: "gigi",
 	},
 }
@@ -46,12 +61,24 @@ func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
 	return &clientData
 }
 
-func (d *mockDB) GetUserCoins(username string) *CoinDetails {
+func (d *mockDB) GetUserBitcoin(username string) *BitcoinDetails {
 	// Simulate db call
 	time.Sleep(time.Second * 1)
 
-	var clientData = CoinDetails{}
-	clientData, ok := mockCoinDetails[username]
+	var clientData = BitcoinDetails{}
+	clientData, ok := mockBitcoinDetails[username]
+	if !ok {
+		return nil
+	}
+	return &clientData
+}
+
+func (d *mockDB) GetUserEthereum(username string) *EthereumDetails {
+	// Simulate db call
+	time.Sleep(time.Second * 1)
+
+	var clientData = EthereumDetails{}
+	clientData, ok := mockEthereumDetails[username]
 	if !ok {
 		return nil
 	}

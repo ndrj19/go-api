@@ -10,14 +10,19 @@ type LoginDetails struct {
 	Username  string
 }
 
-type CoinDetails struct {
+type BitcoinDetails struct {
+	Coins    int64
+	Username string
+}
+type EthereumDetails struct {
 	Coins    int64
 	Username string
 }
 
 type DatabaseInterface interface {
 	GetUserLoginDetails(username string) *LoginDetails
-	GetUserCoins(username string) *CoinDetails
+	GetUserBitcoin(username string) *BitcoinDetails
+	GetUserEthereum(username string) *EthereumDetails
 	SetupDatabase() error
 }
 
