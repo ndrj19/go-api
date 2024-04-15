@@ -11,6 +11,8 @@ func Handler(r *chi.Mux) {
 	// Global middleware
 	r.Use(chimiddle.StripSlashes)
 
+	r.Get("/", Landing)
+
 	r.Route("/account", func(router chi.Router) {
 
 		// Middleware for /account route

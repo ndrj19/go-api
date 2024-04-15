@@ -15,7 +15,15 @@ func main() {
 	handlers.Handler(r)
 
 	fmt.Println("Starting GO API service...")
-	fmt.Println("GO API")
+	fmt.Println(`
+	_______  _______    _______  _______ _________
+	(  ____ \(  ___  )  (  ___  )(  ____ )\__   __/
+	| (    \/| (   ) |  | (   ) || (    )|   ) (   
+	| |      | |   | |  | (___) || (____)|   | |   
+	| | ____ | |   | |  |  ___  ||  _____)   | |   
+	| | \_  )| |   | |  | (   ) || (         | |   
+	| (___) || (___) |  | )   ( || )      ___) (___
+	(_______)(_______)  |/     \||/       \_______/`)
 	err := http.ListenAndServe("localhost:8000", r)
 	if err != nil {
 		log.Error(err)
